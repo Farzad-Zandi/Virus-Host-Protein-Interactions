@@ -109,4 +109,5 @@ print("Compression complete. Encoded shape:", encoded_vectors.shape)
 
 encoded_vectors = [tensor.detach().numpy() for tensor in encoded_vectors]
 encoded_vectors = pd.DataFrame(encoded_vectors)
-encoded_vectors.to_csv('d:/data1_GO_Auto_Encoded.csv')
+
+encoded_vectors.to_csv('/data1_GO_Auto_Encoded.csv')

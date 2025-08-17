@@ -2,7 +2,8 @@
 Optimized Deep Knowledge Distillation Framework for Predicting Large-Scale Virus-Host Protein Interactions Using NearMiss, tuned ISUD Optimization, and Multi-Feature: From Conjoint Triad to Gene Ontology
 ![Graphical Abstract](https://github.com/Farzad-Zandi/Virus-Host-Protein-Interactions/blob/main/Graphical%20Abstract.png)
 
-![Python](https://img.shields.io/badge/Language-Python-brightgreen.svg)  ![Frontend](https://img.shields.io/badge/Libraries-PyTorch-purple.svg)  ![Bootstrap](https://img.shields.io/badge/Deployment-Github-yellow.svg)   ![Bootstrap](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)
+![Languages](https://img.shields.io/badge/Languages-Python%20%7C%20R-brightgreen.svg)
+![Frontend](https://img.shields.io/badge/Libraries-PyTorch-purple.svg)  ![Bootstrap](https://img.shields.io/badge/Deployment-Github-yellow.svg)   ![Bootstrap](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)
 
 ## Abstract
 <p align="justify">

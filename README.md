@@ -2,11 +2,7 @@
 Optimized Deep Knowledge Distillation Framework for Predicting Large-Scale Virus-Host Protein Interactions Using NearMiss, tuned ISUD Optimization, and Multi-Feature: From Conjoint Triad to Gene Ontology
 ![Graphical Abstract](https://github.com/Farzad-Zandi/Virus-Host-Protein-Interactions/blob/main/Graphical%20Abstract.png)
 
-![Languages](https://img.shields.io/badge/Languages-Python%20%7C%20R-brightgreen.svg)  
-![Libraries](https://img.shields.io/badge/Libraries-Numpy%20%7C%20Pandas%20%7C%20PyTorch%20%7C%20Scikit--Learn%20%7C%20Matplotlib%20%7C%20RFE%20%7C%20RandomForest%20%7C%20protr-purple.svg)  
-![Repository](https://img.shields.io/badge/Repository-UniProt-orange.svg)  
-![Deployment](https://img.shields.io/badge/Deployment-Github-yellow.svg)  
-![Debugging](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)
+![Languages](https://img.shields.io/badge/Languages-Python%20%7C%20R-brightgreen.svg)  ![Libraries](https://img.shields.io/badge/Libraries-Numpy%20%7C%20Pandas%20%7C%20PyTorch%20%7C%20Scikit--Learn%20%7C%20Matplotlib%20%7C%20protr-purple.svg)  ![Repository](https://img.shields.io/badge/Repository-UniProt-orange.svg)  ![Deployment](https://img.shields.io/badge/Deployment-Github-yellow.svg)  ![Debugging](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)
 
 
 ## Abstract

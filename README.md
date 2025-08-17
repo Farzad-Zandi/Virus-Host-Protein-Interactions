@@ -3,7 +3,8 @@ Optimized Deep Knowledge Distillation Framework for Predicting Large-Scale Virus
 ![Graphical Abstract](https://github.com/Farzad-Zandi/Virus-Host-Protein-Interactions/blob/main/Graphical%20Abstract.png)
 
 ![Languages](https://img.shields.io/badge/Languages-Python%20%7C%20R-brightgreen.svg)  ![Frontend](https://img.shields.io/badge/Libraries-PyTorch%20%7C%20PROTR-purple.svg)  
-![Bootstrap](https://img.shields.io/badge/Deployment-Github-yellow.svg)  ![Bootstrap](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)
+![Bootstrap](https://img.shields.io/badge/Deployment-Github-yellow.svg)  ![Bootstrap](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)  ![Libraries](https://img.shields.io/badge/Libraries-Numpy%20%7C%20Pandas%20%7C%20PyTorch%20%7C%20Scikit--Learn%20%7C%20Matplotlib%20%7C%20RFE%20%7C%20RandomForest-purple.svg)
+
 
 ## Abstract
 <p align="justify">

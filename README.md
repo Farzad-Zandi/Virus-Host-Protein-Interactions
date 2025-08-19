@@ -4,6 +4,8 @@ Optimized Deep Knowledge Distillation Framework for Predicting Large-Scale Virus
 
 ![Languages](https://img.shields.io/badge/Languages-Python%20%7C%20R-brightgreen.svg)  ![Libraries](https://img.shields.io/badge/Libraries-PyTorch%20%7C%20protr-purple.svg)  ![Repository](https://img.shields.io/badge/Repository-UniProt-orange.svg)  ![Deployment](https://img.shields.io/badge/Deployment-Github-yellow.svg)  ![Debugging](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)
 
+![Custom Badge](https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>)
+![Powered by Copilot](https://img.shields.io/badge/Powered_by-Copilot-8A2BE2)
 
 ## Abstract
 <p align="justify">

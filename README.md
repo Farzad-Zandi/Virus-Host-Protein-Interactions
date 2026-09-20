@@ -1,18 +1,21 @@
 # Virus-Host-Protein-Interactions
-Optimized Deep Knowledge Distillation Framework for Predicting Large-Scale Virus-Host Protein Interactions Using NearMiss, tuned ISUD Optimization, and Multi-Feature: From Conjoint Triad to Gene Ontology
+Optimized Deep Knowledge Distillation for Large-Scale Virus–Host Protein Interactions Prediction
 ![Graphical Abstract](https://github.com/Farzad-Zandi/Virus-Host-Protein-Interactions/blob/main/Graphical%20Abstract.png)
 
 ![Languages](https://img.shields.io/badge/Languages-Python%20%7C%20R-brightgreen.svg)  ![Libraries](https://img.shields.io/badge/Libraries-PyTorch%20%7C%20protr-purple.svg)  ![Repository](https://img.shields.io/badge/Repository-UniProt-orange.svg)  ![Deployment](https://img.shields.io/badge/Deployment-Github-yellow.svg)  ![Debugging](https://img.shields.io/badge/Debugging-LocalHost-blue.svg)
 
 ## Abstract
 <p align="justify">
-In a rapidly evolving viral landscape, understanding how viruses interact with host proteins is vital. In this study, we present an advanced deep learning framework for accurate prediction of virus-host protein interactions, leveraging a Knowledge Distillation approach. The model integrates three pre-trained teacher networks with a hybrid student architecture to enhance generalization and performance. A diverse set of sequence-based feature extraction techniques—including CT, DC, DDE, and PseAAC—were utilized alongside amino acid encoding and Gene Ontology (GO) annotation features to comprehensively represent protein characteristics. To mitigate the challenges posed by the high dimensionality of the input space, the ISUD metaheuristic algorithm—fine-tuned during the training phase—was employed for feature reduction, alongside several established dimensionality reduction techniques. Additionally, an Autoencoder was implemented to compress the one-hot encoded Gene Ontology (GO) terms, further streamlining the input representation for efficient learning. The framework was evaluated on an extensive virus-host protein interaction dataset using 25 randomly balanced datasets and one additional balanced dataset constructed via the NearMiss technique. Experimental results indicate that the proposed model achieves superior predictive performance, with an accuracy of 92.91% and an AUC-ROC of 95.36%, outperforming several existing methods.
+Background: In a rapidly evolving viral landscape, understanding virus–host protein interactions (VHPIs) are essential for elucidating viral infection mechanisms and supporting the development of effective therapeutic strategies. Accurate computational prediction of VHPIs remains challenging because of the complexity and high dimensionality of protein sequence and functional representations.
+Methods: We propose a Knowledge Distillation framework for pairwise VHPIs prediction that integrates three teacher networks with a hybrid student architecture. Protein characteristics were represented using Conjoint Triad  (CT), Dipeptide Composition (DC), Dipeptide Deviation from Expected Mean (DDE), Pseudo-Amino Acid Composition (PseAAC), amino acid encoding, and Gene Ontology (GO) features. Tuned Monte Carlo ISUD was employed for feature selection and compared with five alternative approaches, namely PCA, MCFS, NMF, FA, and Optuna. An Autoencoder was used to compress the one-hot encoded GO features. The framework was evaluated on 25 randomly balanced datasets and one additional balanced dataset generated using NearMiss. Five-fold cross-validation was performed at the interaction-pair level using an 80:20 training-to-test ratio in each fold. The final configuration consisted of CT features, NearMiss-based data balancing, tuned MC-ISUD feature selection, and the Knowledge Distillation teacher–student framework.
+Results: The proposed framework achieved an accuracy of 92.91% and an AUC-ROC of 96.16% on the evaluated virus–host protein interaction datasets. Comparative experiments demonstrated that the proposed approach outperformed the existing methods considered in this study. These results are specific to the evaluated datasets and pairwise cross-validation design and should not be interpreted as evidence of generalization to completely unseen viral or host proteins.
+Conclusions: The findings indicate that combining CT-based representation, NearMiss-based data balancing, tuned ISUD feature selection, and Knowledge Distillation provides a computational framework for pairwise VHPIs prediction. The predictions should be regarded as computational hypotheses requiring independent experimental validation.
 </p>
 
 ## Keyword
 Virus-Host Protein Interaction, Deep Learning, Feature Extraction, Feature Selection, Data Balancing.
 ## Authors
-Farzad Zandi, Reza Sheibani.
+Farzad Zandi, Parvaneh Mansouri.
 ## DOI and Links
 - DOI: [https://](https://)
 - Article: [https://](https://)

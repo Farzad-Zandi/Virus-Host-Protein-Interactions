@@ -1,5 +1,5 @@
 # ============================================================
-# Farzad Zandi, 2025
+# Farzad Zandi, 2026
 # Autoencoder-Based Compression of One-Hot-Encoded
 # Gene Ontology (GO) Protein Function Features
 # ============================================================
@@ -12,7 +12,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 
 print("=" * 60)
-print("Farzad Zandi, 2025")
+print("Farzad Zandi, 2026")
 print("Autoencoder-Based Compression of One-Hot-Encoded GO Features")
 print("=" * 60)
 
@@ -166,8 +166,8 @@ encoded_vectors = [
 ]
 
 encoded_vectors = pd.DataFrame(encoded_vectors)
-encoded_vectors.to_csv('/DATA_NAME_GO_Auto_Encoded.csv', index=False)
+encoded_vectors.to_csv('/DATASET_NAME_GO_Auto_Encoded.csv', index=False)
 
 print("\nEncoded GO representations saved successfully.")
-print("Output file: /DATA_NAME_GO_Auto_Encoded.csv")
+print("Output file: /DATASET_NAME_GO_Auto_Encoded.csv")
 print("=" * 60)

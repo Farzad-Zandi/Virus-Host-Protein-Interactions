@@ -1,77 +1,181 @@
-## Farzad Zandi, 2025.
-# Feature Extraction.
-rm(list=ls())
+# ============================================================
+# Farzad Zandi, 2026
+# Protein Sequence Feature Extraction
+# ============================================================
 
+rm(list = ls())
+
+# ------------------------------------------------------------
+# Load required packages
+# ------------------------------------------------------------
 library(dplyr)
 library(protr)
 library(ftrCOOL)
 library(data.table)
 
-# Load train data.
-# Data 1.
-data1 <- read.table('D:/Research/Virus Host PPIs/train_and_test/train_set_group1', header = TRUE)
+# ============================================================
+# Load Training Data
+# ============================================================
 
-# Data 2.
-data2 <- read.table('D:/Research/Virus Host PPIs/train_and_test/train_set_group2', header = TRUE)
+# Training data: Group 1
+data1 <- read.table('/train_set_group1', header = TRUE)
 
-# Data 3.
-data3 <- read.table('D:/Research/Virus Host PPIs/train_and_test/train_set_group3', header = TRUE)
+# Training data: Group 2
+data2 <- read.table('/train_set_group2',  header = TRUE)
 
-# Merge train data.
-dataTrain = rbind(data1, data2, data3)
-dataTrain <- dataTrain %>% distinct(Human_ID, Virus_ID, .keep_all = TRUE)
+# Training data: Group 3
+data3 <- read.table('/train_set_group3',  header = TRUE)
 
-# Remove extra variables.
+# ------------------------------------------------------------
+# Merge training datasets and remove duplicate interactions
+# ------------------------------------------------------------
+dataTrain <- rbind(data1, data2, data3)
+
+dataTrain <- dataTrain %>%
+  distinct(
+    Human_ID,
+    Virus_ID,
+    .keep_all = TRUE
+  )
+
+# Release temporary objects
 rm(data1, data2, data3)
 
-# Load Test data.
-# Data 1.
-data1 <- read.table('D:/Research/Virus Host PPIs/train_and_test/independent_test_group1', header = TRUE)
+# ============================================================
+# Load Independent Test Data
+# ============================================================
 
-# Data 2.
-data2 <- read.table('D:/Research/Virus Host PPIs/train_and_test/independent_test_group2', header = TRUE)
+# Independent test data: Group 1
+data1 <- read.table(/independent_test_group1', header = TRUE)
 
-# Data 3.
-data3 <- read.table('D:/Research/Virus Host PPIs/train_and_test/independent_test_group3', header = TRUE)
+# Independent test data: Group 2
+data2 <- read.table(/independent_test_group2', header = TRUE)
 
-# Merge test data.
-dataTest = rbind(data1, data2, data3)
-dataTest <- dataTest %>% distinct(Human_ID, Virus_ID, .keep_all = TRUE)
+# Independent test data: Group 3
+data3 <- read.table(/independent_test_group3', header = TRUE)
 
-# Remove extra variables.
-rm(data1, data2, data3)  
+# ------------------------------------------------------------
+# Merge independent test datasets and remove duplicates
+# ------------------------------------------------------------
+dataTest <- rbind(data1, data2, data3)
 
-# Merge train and test data.
+dataTest <- dataTest %>%
+  distinct(
+    Human_ID,
+    Virus_ID,
+    .keep_all = TRUE
+  )
+
+# Release temporary objects
+rm(data1, data2, data3)
+
+# ============================================================
+# Combine Training and Test Data
+# ============================================================
 allData <- rbind(dataTrain, dataTest)
-allData <- allData %>% distinct(Human_ID, Virus_ID, .keep_all = TRUE)
 
-# Extract features.
-CT = c()
-DDE = c()
-PseAAC = c()
-DC = c()
+allData <- allData %>%
+  distinct(
+    Human_ID,
+    Virus_ID,
+    .keep_all = TRUE
+  )
 
-for (i in 1:575239)
-{
+# ============================================================
+# Extract Protein Sequence Features
+# ============================================================
+
+# Initialize feature matrices
+CT <- c()
+DDE <- c()
+PseAAC <- c()
+DC <- c()
+
+# ------------------------------------------------------------
+# Extract sequence-based features from viral proteins
+# The same feature extraction procedure is applied to host protein
+# ------------------------------------------------------------
+
+for (i in 1:575239) {
+
   seq <- allData$Virus_Seq[i]
-  out <- extractCTriad(seq) # Extract Conjoint Triad Features.
-  CT <- rbind(CT, out)
-  
-  out = PSEAAC(seq, lambda = 11) # Extract Pseudo Amino Acid Composition Features.
-  PseAAC <- rbind(PseAAC, out)
-  
-  out <- DDE(seq) # Extract Dipeptide Deviation from Expected Mean Features.
-  DDE <- rbind(DDE, out)
-  
-  out <- extractDC(seq) # Extract Dipeptide Composition Features.
-  DC <- rbind(DC, out)
+
+  # Conjoint Triad (CT) features
+  out <- extractCTriad(seq)
+  CT <- rbind(
+    CT,
+    out
+  )
+
+  # Pseudo-Amino Acid Composition (PseAAC) features
+  out <- PSEAAC(
+    seq,
+    lambda = 11
+  )
+
+  PseAAC <- rbind(
+    PseAAC,
+    out
+  )
+
+  # Dipeptide Deviation from Expected Mean (DDE) features
+  out <- DDE(seq)
+  DDE <- rbind(
+    DDE,
+    out
+  )
+
+  # Dipeptide Composition (DC) features
+  out <- extractDC(seq)
+  DC <- rbind(
+    DC,
+    out
+  )
 }
 
+# ============================================================
+# Convert Extracted Features to Data Frames
+# ============================================================
 virus_CT <- as.data.frame(CT)
 virus_DC <- as.data.frame(DC)
 virus_DDE <- as.data.frame(DDE)
 virus_PseAAC <- as.data.frame(PseAAC)
 
-# Save new data.
-write.csv(virus_CT, '/virus_CT.csv')
-...
+
+# ============================================================
+# Save Extracted Features
+# ============================================================
+
+write.csv(
+  virus_CT,
+  '/virus_CT.csv',
+  row.names = FALSE
+)
+
+write.csv(
+  virus_DC,
+  '/virus_DC.csv',
+  row.names = FALSE
+)
+
+write.csv(
+  virus_DDE,
+  '/virus_DDE.csv',
+  row.names = FALSE
+)
+
+write.csv(
+  virus_PseAAC,
+  '/virus_PseAAC.csv',
+  row.names = FALSE
+)
+
+# ============================================================
+# Feature Extraction Completed
+# ============================================================
+
+cat("\n")
+cat("============================================================\n")
+cat("Protein sequence feature extraction completed successfully.\n")
+cat("Generated representations: CT, DC, DDE, and PseAAC.\n")
+cat("============================================================\n")

@@ -1,38 +1,64 @@
-## Farzad Zandi, 2025.
-# Auto Encoding one-hot-encoded protein functions.
+# ============================================================
+# Farzad Zandi, 2025
+# Autoencoder-Based Compression of One-Hot-Encoded
+# Gene Ontology (GO) Protein Function Features
+# ============================================================
 
 import torch
 import numpy as np
 import pandas as pd
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader, TensorDataset, random_split
+from torch.utils.data import DataLoader, TensorDataset
 
-print("===================")
-print("Farzad Zandi, 2025.")
-print("Auto Encoding one-hot-encoded protein functions.")
+print("=" * 60)
+print("Farzad Zandi, 2025")
+print("Autoencoder-Based Compression of One-Hot-Encoded GO Features")
+print("=" * 60)
 
-# Load dataset
-print("Loading Datasets...")
-data = pd.read_csv('/data1_GO.csv')
-data = data.drop(data.columns[[0, 1, 2, 3]], axis=1)
+# ------------------------------------------------------------
+# Load and preprocess the dataset
+# ------------------------------------------------------------
+print("\nLoading dataset...")
+
+data = pd.read_csv('/DATASET_NAME.csv')
+
+# Remove identifier and metadata columns
+data = data.drop(data.columns[[]], axis=1)
+
 input_dim = data.shape[1]
 encoding_dim = 512
 batch_size = 128
 epochs = 100
+
+# Select GPU when available; otherwise, use CPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print("Data Dimension: ", data.shape)
 
-# Prepare dataset
+print(f"Dataset dimensions: {data.shape}")
+print(f"Input feature dimension: {input_dim}")
+print(f"Encoded feature dimension: {encoding_dim}")
+print(f"Computation device: {device}")
+
+# ------------------------------------------------------------
+# Prepare data for model training
+# ------------------------------------------------------------
 data = np.array(data)
-tensor_data = torch.from_numpy(np.array(data)).float()
+tensor_data = torch.from_numpy(data).float()
 dataset = TensorDataset(tensor_data)
-train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+train_loader = DataLoader(
+    dataset,
+    batch_size=batch_size,
+    shuffle=True
+)
 
-# Autoencoder with dropout and Xavier init
+# ------------------------------------------------------------
+# Define the Gene Ontology Autoencoder
+# ------------------------------------------------------------
 class GOAutoencoder(nn.Module):
     def __init__(self):
         super(GOAutoencoder, self).__init__()
+
+        # Encoder network
         self.encoder = nn.Sequential(
             nn.Linear(input_dim, 8192),
             nn.ReLU(),
@@ -44,6 +70,8 @@ class GOAutoencoder(nn.Module):
             nn.ReLU(),
             nn.Linear(1024, encoding_dim)
         )
+
+        # Decoder network
         self.decoder = nn.Sequential(
             nn.Linear(encoding_dim, 1024),
             nn.ReLU(),
@@ -54,34 +82,45 @@ class GOAutoencoder(nn.Module):
             nn.Linear(8192, input_dim)
         )
 
-        # Initialize weights
+        # Xavier uniform initialization for all linear layers
         for layer in self.encoder:
             if isinstance(layer, nn.Linear):
                 nn.init.xavier_uniform_(layer.weight)
+
         for layer in self.decoder:
             if isinstance(layer, nn.Linear):
                 nn.init.xavier_uniform_(layer.weight)
 
     def forward(self, x):
+        # Encode the input into a lower-dimensional representation
         z = self.encoder(x)
+
+        # Reconstruct the original input from the encoded representation
         out = self.decoder(z)
         return out
 
-# Training setup
+# ------------------------------------------------------------
+# Configure model training
+# ------------------------------------------------------------
 model = GOAutoencoder().to(device)
 criterion = nn.BCEWithLogitsLoss()
-optimizer = optim.Adam(model.parameters(), lr=1e-3)
+optimizer = optim.Adam(
+    model.parameters(),
+    lr=1e-3
+)
 
 early_stop_counter = 0
 patience = 10
 loss_hist = []
 best_loss = float('inf')
+print("\nStarting autoencoder training...")
 
-print("Auto Encoding...")
-# Training loop
+# ------------------------------------------------------------
+# Train the autoencoder
+# ------------------------------------------------------------
 for epoch in range(epochs):
     model.train()
-    train_loss = 0
+    train_loss = 0.0
     for (x,) in train_loader:
         x = x.to(device)
         optimizer.zero_grad()
@@ -91,23 +130,44 @@ for epoch in range(epochs):
         optimizer.step()
         train_loss += loss.item()
     loss_hist.append(train_loss)
+
+    # Early stopping based on training loss
     if train_loss < best_loss:
         best_loss = train_loss
         early_stop_counter = 0
     else:
         early_stop_counter += 1
         if early_stop_counter >= patience:
-            print(f'Early stopping at epoch {epoch + 1}')
+            print(f"Early stopping triggered at epoch {epoch + 1}.")
             break
-    print(f"Epoch {epoch+1}/{epochs} - Train Loss: {train_loss:.4f}")
+    print(
+        f"Epoch {epoch + 1:3d}/{epochs} "
+        f"| Training Loss: {train_loss:.4f}"
+    )
 
-# Encode final dataset
+# ------------------------------------------------------------
+# Generate compressed GO representations
+# ------------------------------------------------------------
+print("\nGenerating compressed GO representations...")
 with torch.no_grad():
-    encoded_vectors = model.encoder(tensor_data.to(device)).cpu()
+    encoded_vectors = model.encoder(
+        tensor_data.to(device)
+    ).cpu()
 
-print("Compression complete. Encoded shape:", encoded_vectors.shape)
+print("Compression completed successfully.")
+print(f"Encoded representation shape: {encoded_vectors.shape}")
 
-encoded_vectors = [tensor.detach().numpy() for tensor in encoded_vectors]
+# ------------------------------------------------------------
+# Save the encoded representations
+# ------------------------------------------------------------
+encoded_vectors = [
+    tensor.detach().numpy()
+    for tensor in encoded_vectors
+]
+
 encoded_vectors = pd.DataFrame(encoded_vectors)
+encoded_vectors.to_csv('/DATA_NAME_GO_Auto_Encoded.csv', index=False)
 
-encoded_vectors.to_csv('/data1_GO_Auto_Encoded.csv')
+print("\nEncoded GO representations saved successfully.")
+print("Output file: /DATA_NAME_GO_Auto_Encoded.csv")
+print("=" * 60)

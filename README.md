@@ -27,7 +27,7 @@ The raw datasets are available in [https://github.com/Farzad-Zandi/Virus-Host-Pr
 
 All codes are available in the Code folder.
 
-The results for all datasets evaluated using the three feature extraction methods are provided in the Results folder in the file “Tables.pdf.”
+The results for all datasets evaluated using the three feature extraction methods are provided in the Results folder in the file “Results.pdf.”
 
 ## Usage
 To run the model, follow the steps below:

@@ -24,8 +24,11 @@ Farzad Zandi, Parvaneh Mansouri.
 - Article: [https://](https://)
 ## Description
 The raw datasets are available in [https://github.com/Farzad-Zandi/Virus-Host-Protein-Interactions/releases/tag/Raw_Datasets](https://github.com/Farzad-Zandi/Virus-Host-Protein-Interactions/releases/tag/Raw_Datasets)
+
 All codes are available in the Code folder.
+
 The results for all datasets evaluated using the three feature extraction methods are provided in the Results folder in the file “supplementary tables.pdf.”
+
 ## Usage
 To run the model, follow the steps below:
 

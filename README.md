@@ -7,8 +7,11 @@ Optimized Deep Knowledge Distillation for Large-Scale Virus–Host Protein Inter
 ## Abstract
 <p align="justify">
 Background: In a rapidly evolving viral landscape, understanding virus–host protein interactions (VHPIs) is essential to elucidate viral infection mechanisms and support the development of effective therapeutic strategies. Accurate computational Prediction of VHPIs remains challenging because of the complexity and high dimensionality of protein sequence and functional representations.
+   
 Methods: We propose a Knowledge Distillation framework for pairwise VHPI prediction that integrates three teacher networks with a hybrid student architecture. Protein characteristics were represented using Conjoint Triad  (CT), Dipeptide Composition (DC), Dipeptide Deviation from Expected Mean (DDE), Pseudo-Amino Acid Composition (PseAAC), amino acid encoding, and Gene Ontology (GO) features. We used tuned Monte Carlo ISUD for feature selection and compared it with five alternative approaches: PCA, MCFS, NMF, FA, and Optuna. We used an autoencoder to compress the one-hot encoded GO features. We evaluated on 25 randomly balanced datasets and one additional balanced dataset generated using NearMiss. Five-fold cross-validation was performed at the interaction-pair level using an 80:20 training-to-test ratio in each fold. The final configuration consisted of CT features, NearMiss-based data balancing, tuned MC-ISUD feature selection, and the Knowledge Distillation teacher–student framework.
+
 Results: The proposed framework achieved 92.91% accuracy and 96.16% AUC-ROC on the evaluated virus–host protein interaction datasets. Comparative experiments demonstrated that the proposed approach outperformed the existing methods considered in this study. These results are specific to the evaluated datasets and pairwise cross-validation design and should not be interpreted as evidence of generalization to completely unseen viral or host proteins.
+
 Conclusions: The findings indicate that combining CT-based representation, NearMiss-based data balancing, tuned ISUD feature selection, and Knowledge Distillation provides a computational framework for pairwise VHPI prediction. The predictions should be regarded as computational hypotheses requiring independent experimental validation.
 </p>
 

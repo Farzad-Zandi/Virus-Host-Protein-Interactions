@@ -32,11 +32,14 @@ The results for all datasets evaluated using the three feature extraction method
 ## Usage
 To run the model, follow the steps below:
 
-1. Change the cost function in  .py file.
-   - Run ` .py` to Find the optimal values.
-     ```sh
-       .py
-     ```
+1. Download the raw files.
+2. Run Feature Extraction.R to extract the features. The script includes four feature extraction methods: CT, DC, DDE, and PseAAC. after extraction save the four     extracted files.
+3. To extract the GO annotations, run GO_Extraction.R and save the output file.
+4. Run GO_to_ONE_HOT.py to generate one-hot encoded data from GO annotation.
+5. Run Auto_Encoder.py to make the encoded GO representation.
+6. Run Balancing_technique.py to balance the datasets.
+7. Run Feature_Selection_Methods.py for feature selection.
+8. Run the Model.py.
 ## Citiation
 ```bibtex
 @article {

@@ -20,7 +20,7 @@ Virus-Host Protein Interaction, Deep Learning, Feature Extraction, Feature Selec
 ## Authors
 Farzad Zandi, Parvaneh Mansouri.
 ## DOI and Links
-- DOI: [https://https://doi.org/10.1016/j.ppl.2026.10.001](https://https://doi.org/10.1016/j.ppl.2026.10.001)
+- DOI: [https://doi.org/10.1016/j.ppl.2026.10.001](https://doi.org/10.1016/j.ppl.2026.10.001)
 - Article: [https://www.sciencedirect.com/science/article/pii/S092986652600041X](https://www.sciencedirect.com/science/article/pii/S092986652600041X)
 ## Description
 The raw datasets are available in [https://github.com/Farzad-Zandi/Virus-Host-Protein-Interactions/releases/tag/Raw_Datasets](https://github.com/Farzad-Zandi/Virus-Host-Protein-Interactions/releases/tag/Raw_Datasets)
